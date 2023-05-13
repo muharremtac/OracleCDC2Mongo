@@ -54,7 +54,7 @@ services:
       SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: 'zookeeper:2181'
   
   database:
-    image: 'store/oracle/database-enterprise:12.2.0.1-slim'
+    image: wvbirder/database-enterprise:12.2.0.1-slim
     hostname: oracle
     container_name: oracle
     ports:
@@ -124,7 +124,7 @@ services:
 #      KSQL_CONSUMER_INTERCEPTOR_CLASSES: "io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor"
 
   ksql-cli:
-    image: confluentinc/cp-ksql-cli:5.3.0
+    image: confluentinc/cp-ksql-cli:latest
     container_name: ksql-cli
     depends_on:
       - broker
@@ -134,7 +134,7 @@ services:
     tty: true
 
   rest-proxy:
-    image: confluentinc/cp-kafka-rest:5.3.0
+    image: confluentinc/cp-kafka-rest:latest
     depends_on:
       - zookeeper
       - broker
